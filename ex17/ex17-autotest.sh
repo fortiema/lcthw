@@ -22,9 +22,22 @@ function TestCreateDB()
     CheckDBExistence
 }
 
+function SetEntry()
+{
+    if [ $# -eq 3 ]; then
+        CheckDBExistence
+        ./ex17 $DBFile s $1 $2 $3
+    else
+        echo "SetEntry: Invalid Arguments"
+        exit 2
+    fi
+}
+
 echo "Starting auto-test suite for ex17..."
 
 TestCreateDB
+SetEntry 1 Matt mfortier@jupiter.com
+SetEntry 2 Yan yroy@jupiter.com
 
 echo "All tests passed! Exiting..."
 
